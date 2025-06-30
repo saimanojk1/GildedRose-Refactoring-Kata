@@ -31,6 +31,9 @@ func UpdateQuality(items []*Item) {
 				}
 			}
 			item.SellIn--
+			if item.SellIn < 0 {
+				item.Quality = item.Quality - item.Quality
+			}
 		case "Sulfuras, Hand of Ragnaros":
 		default:
 			if item.Quality > 0 {
@@ -47,8 +50,6 @@ func UpdateQuality(items []*Item) {
 							item.Quality = item.Quality - 1
 						}
 					}
-				} else {
-					item.Quality = item.Quality - item.Quality
 				}
 			}
 		}
