@@ -40,19 +40,11 @@ func UpdateQuality(items []*Item) {
 				item.Quality--
 			}
 			item.SellIn--
-		}
-
-		if item.SellIn < 0 {
-			if item.Name != "Aged Brie" {
-				if item.Name != "Backstage passes to a TAFKAL80ETC concert" {
-					if item.Quality > 0 {
-						if item.Name != "Sulfuras, Hand of Ragnaros" {
-							item.Quality = item.Quality - 1
-						}
-					}
+			if item.SellIn < 0 {
+				if item.Quality > 0 {
+					item.Quality--
 				}
 			}
 		}
 	}
-
 }
