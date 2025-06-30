@@ -8,6 +8,8 @@ type Item struct {
 func UpdateQuality(items []*Item) {
 	for _, item := range items {
 		switch item.Name {
+		case "Sulfuras, Hand of Ragnaros":
+			continue
 		case "Aged Brie":
 			if item.Quality < 50 {
 				item.Quality++
@@ -34,7 +36,6 @@ func UpdateQuality(items []*Item) {
 			if item.SellIn < 0 {
 				item.Quality = item.Quality - item.Quality
 			}
-		case "Sulfuras, Hand of Ragnaros":
 		default:
 			if item.Quality > 0 {
 				item.Quality--
