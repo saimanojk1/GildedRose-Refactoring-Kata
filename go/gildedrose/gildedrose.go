@@ -11,13 +11,11 @@ func UpdateQuality(items []*Item) {
 		case "Sulfuras, Hand of Ragnaros":
 			continue
 		case "Aged Brie":
+			item.SellIn--
 			if item.Quality < 50 {
 				item.Quality++
-			}
-			item.SellIn--
-			if item.SellIn < 0 {
-				if item.Quality < 50 {
-					item.Quality = item.Quality + 1
+				if item.SellIn < 0 {
+					item.Quality++
 				}
 			}
 		case "Backstage passes to a TAFKAL80ETC concert":
@@ -34,15 +32,13 @@ func UpdateQuality(items []*Item) {
 			}
 			item.SellIn--
 			if item.SellIn < 0 {
-				item.Quality = item.Quality - item.Quality
+				item.Quality = 0
 			}
 		default:
+			item.SellIn--
 			if item.Quality > 0 {
 				item.Quality--
-			}
-			item.SellIn--
-			if item.SellIn < 0 {
-				if item.Quality > 0 {
+				if item.SellIn < 0 {
 					item.Quality--
 				}
 			}
